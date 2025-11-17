@@ -33,7 +33,7 @@
             </div>
         </section>
 
-        <!-- Форма обратной связи -->
+        
         <section class="beautiful-feedback">
             <div class="form-container">
                 <h2>Форма обратной связи</h2>
@@ -73,25 +73,25 @@
             const comment = document.getElementById('comment').value;
             const message = document.getElementById('message');
             
-            // Проверка на пустые поля
+            
             if (name === '' || email === '' || comment === '') {
                 message.textContent = 'Все поля должны быть заполнены!';
                 message.className = 'message error';
                 return;
             }
             
-            // Простая проверка email
+            
             if (email.indexOf('@') === -1) {
                 message.textContent = 'Введите валидный email!';
                 message.className = 'message error';
                 return;
             }
             
-            // Если все проверки пройдены
+            
             message.textContent = `Спасибо, ${name}! Ваш email: ${email}, комментарий: "${comment}"`;
             message.className = 'message success';
             
-            // Очищаем форму
+            
             document.getElementById('feedbackForm').reset();
         });
     </script>
