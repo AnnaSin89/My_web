@@ -29,10 +29,72 @@
             
             <div class="features">
                 <div class="feature">
+                </div>
+            </div>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section class="beautiful-feedback">
+            <div class="form-container">
+                <h2>Форма обратной связи</h2>
+                
+                <form id="feedbackForm">
+                    <div class="input-group">
+                        <label>Имя:</label>
+                        <input type="text" id="name" name="name" placeholder="Ваше имя">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Email:</label>
+                        <input type="text" id="email" name="email" placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Комментарий:</label>
+                        <textarea id="comment" name="comment" placeholder="Ваш комментарий..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        Отправить
+                    </button>
+                </form>
+                
+                <p id="message" class="message"></p>
             </div>
         </section>
     </main>
-    
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const comment = document.getElementById('comment').value;
+            const message = document.getElementById('message');
+            
+            // Проверка на пустые поля
+            if (name === '' || email === '' || comment === '') {
+                message.textContent = 'Все поля должны быть заполнены!';
+                message.className = 'message error';
+                return;
+            }
+            
+            // Простая проверка email
+            if (email.indexOf('@') === -1) {
+                message.textContent = 'Введите валидный email!';
+                message.className = 'message error';
+                return;
+            }
+            
+            // Если все проверки пройдены
+            message.textContent = `Спасибо, ${name}! Ваш email: ${email}, комментарий: "${comment}"`;
+            message.className = 'message success';
+            
+            // Очищаем форму
+            document.getElementById('feedbackForm').reset();
+        });
+    </script>
 
 </body>
 </html>
